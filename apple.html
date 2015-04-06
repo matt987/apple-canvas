@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Trying canvas</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/cover.css" rel="stylesheet">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+  </head>
+<body>
+    <canvas id="myCanvas" width="500" height="500">
+
+    </canvas>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        var canvas = $("#myCanvas");
+        var context = canvas.get(0).getContext("2d");
+
+
+        // dibujarTaTeTi(context);
+
+        // console.log(context);
+        context.fillStyle = "#CCC";
+        dibujarRect(context, 90, 160, 323, 201)
+        context.fillStyle = "rgb(255,255,255)";
+        dibujarCirculo(context, 240, 250, 30, 0, Math.PI * 2, true);
+        dibujarCirculo(context, 265 , 250, 30, 0, Math.PI * 2, true);
+        context.fillStyle = "#CCC";
+        context.strokeStyle = "#FFF";
+        dibujarCirculo(context, 290, 240, 15, 0, Math.PI * 2, true);
+        context.lineWidth = 2; 
+        
+        dibujarLinea(context, 265, 200, 255, 210);
+        dibujarLinea(context, 255, 210, 255, 220);
+        dibujarLinea(context, 255, 220, 265, 210);
+        dibujarLinea(context, 265, 210, 265, 200);
+        context.lineWidth = 5;  
+        dibujarLinea(context, 265, 205, 255, 215);
+        context.lineWidth = 2; 
+        dibujarLinea(context, 265, 200, 255, 220);
+        context.lineWidth = 5; 
+        context.strokeStyle = "#CCC";
+        dibujarLinea(context, 410, 360, 470, 250);
+        context.lineWidth = 2; 
+        dibujarLinea(context, 469, 250, 299, 250);
+
+        dibujarLinea(context, 460, 271, 300, 271);
+
+        dibujarLinea(context, 450, 291, 300, 291);
+
+        dibujarLinea(context, 435, 311, 300, 311);
+
+        dibujarLinea(context, 425, 331, 300, 331);
+
+        dibujarLinea(context, 385, 360, 445, 250);
+
+        dibujarLinea(context, 360, 360, 420, 250);
+
+        pintarPalabras(context);
+      });
+
+
+      function pintarPalabras(context) {
+        context.strokeStyle = "#FFF";
+        var text = "Apple inc."; 
+        context.font = "italic 25px serif"; 
+        context.strokeText(text, 200, 310);
+      }
+
+    
+
+      function dibujarLinea(context,x0, y0, x1, y1) {
+        context.beginPath(); // Start the path 
+        context.moveTo(x0, y0); // Set the path origin 
+        context.lineTo(x1, y1); // Set the path destination 
+        context.closePath(); // Close the path 
+        context.stroke(); // Outline the path         
+      }
+
+      function dibujarRect(context, x0, y0, x1, y1) {
+        context.fillRect(x0,y0,x1,y1);
+      }
+
+      function dibujarCirculo(context, x, y, radius, startAngle, endAngle, anticlockwise){
+        context.beginPath(); // Start the path
+        context.arc(x, y, radius, startAngle, endAngle, anticlockwise); // Draw a circle 
+        context.closePath(); // Close the path
+        context.fill(); // Fill the path
+      }
+
+
+    </script>
+</body>
+</html>
